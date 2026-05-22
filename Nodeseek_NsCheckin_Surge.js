@@ -4,11 +4,15 @@
 @Adapted: Surge 5
 
 使用方法：
+// ================== NS CK 抓取配置 ==================
+// 请在 Surge [Script] 部分添加以下配置：
+//MITM:www.nodeseek.com
+nsck抓取 = type=http-request,pattern=^https://www\.nodeseek\.com/api/account/getInfo/\d+\?readme=1$,requires-body=0,script-path=https://raw.githubusercontent.com/naixueqwq/surge-signin-scripts/main/Nodeseek_NsCheckin_Surge.js,script-update-interval=0
+// ===================================================
 1. Surge 开启 MitM，并信任证书
-2. 启用模块
-3. 登录 nodeseek.com
-4. 点击个人头像进入信息页面，触发 Header 获取
-5. 之后由 cron 每天 00:01 自动签到
+2. 登录 nodeseek.com
+3. 点击个人头像进入信息页面，触发 Header 获取
+4. 之后由 cron 每天 00:01 自动签到
 */
 
 const NS_HEADER_KEY = "NS_NodeseekHeaders";
